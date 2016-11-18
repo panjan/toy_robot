@@ -1,9 +1,28 @@
 require 'spec_helper'
 
 describe ToyRobot::FileReader do
-  context 'when file does not exist' do
-    it 'raises an error' do
-      expect { ToyRobot::FileReader.process_file }.to raise_error(ArgumentError)
+  describe '#process_file' do
+    context 'when file does not exist' do
+      it 'raises an error' do
+        expect { ToyRobot::FileReader.process_file }
+          .to raise_error ArgumentError
+      end
+    end
+
+    context 'when file exists' do
+      let(:file) { ['PLACE 0,0,NORTH', 'MOVE', 'LEFT', 'RIGHT', 'REPORT'] }
+
+      before do
+        allow(File).to receive(:file?).and_return true
+        allow(File).to receive(:readlines).with(an_instance_of(String)).and_return file
+      end
+
+      it 'executes each command' do
+        expect(ToyRobot::Controller)
+          .to receive(:do)
+          .exactly(5).times
+        ToyRobot::FileReader.process_file 'foo'
+      end
     end
   end
 end
