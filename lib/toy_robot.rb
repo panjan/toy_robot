@@ -1,5 +1,13 @@
 require "toy_robot/version"
 
 module ToyRobot
-  # Your code goes here...
+  class << self
+    def start(arg)
+      if arg
+        puts 'file'
+      else
+        puts 'repl'
+      end
+    end
+  end
 end
