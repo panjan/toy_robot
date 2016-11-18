@@ -7,7 +7,7 @@ module ToyRobot
       raise ArgumentError, 'Given argument is not a file.' unless
         File.file? file
       File.readlines(file).each do |line|
-        ToyRobot::Controller.do line
+        Controller.do line
       end
     end
   end
