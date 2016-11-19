@@ -17,7 +17,7 @@ module ToyRobot
       when 'report'
         robot.report
       else
-        puts 'invalid command'
+        ToyRobot.log "Invalid command: #{command}"
       end
     end
   end

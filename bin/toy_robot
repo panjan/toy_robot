@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
 require 'toy_robot'
-puts ToyRobot.start(ARGV[0])
+ToyRobot.start(ARGV[0])
