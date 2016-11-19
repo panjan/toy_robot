@@ -1,10 +1,12 @@
 require 'spec_helper'
 
 describe ToyRobot::FileReader do
+  let(:subject) { ToyRobot::FileReader }
+
   describe '#process_file' do
     context 'when file does not exist' do
       it 'raises an error' do
-        expect { ToyRobot::FileReader.process_file }
+        expect { subject.process_file }
           .to raise_error ArgumentError
       end
     end
@@ -21,7 +23,7 @@ describe ToyRobot::FileReader do
         expect(ToyRobot::Controller)
           .to receive(:do)
           .exactly(5).times
-        ToyRobot::FileReader.process_file 'foo'
+        subject.process_file 'foo'
       end
     end
   end
