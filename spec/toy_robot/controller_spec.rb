@@ -5,10 +5,17 @@ describe ToyRobot::Controller do
 
   describe '#do' do
     context 'when command is place' do
-      it 'calls place! with correct arguments' do
+      before do
         expect(subject.robot)
           .to receive(:place!).with(0, 0, 'south')
+      end
+
+      it 'calls place! with correct arguments' do
         subject.do('PLACE 0,0,SOUTH')
+      end
+
+      it 'works with spaces in the middle' do
+        subject.do('  PLACE  0 , 0,  SOUTH ')
       end
     end
 
