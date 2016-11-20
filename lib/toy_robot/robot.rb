@@ -39,5 +39,9 @@ module ToyRobot
     def report
       ToyRobot.log "#{@x},#{@y},#{direction.upcase}"
     end
+
+    def placed?
+      @x && @y && @direction
+    end
   end
 end
